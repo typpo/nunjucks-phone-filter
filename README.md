@@ -2,6 +2,10 @@
 
 Phone number formatter for Nunjucks templating engine, based on Google's [libphonenumber](https://github.com/googlei18n/libphonenumber).
 
+```
+npm install --save nunjucks-phone-filter
+```
+
 ## Usage
 
 First get your nunjucks environment object.
