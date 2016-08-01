@@ -1,6 +1,7 @@
 'use strict';
 
 var libphonenumber = require('google-libphonenumber')
+var PNF = libphonenumber.PhoneNumberFormat;
 
 var defaultCountry = 'US';
 var defaultFormat = PNF.NATIONAL;
@@ -27,13 +28,12 @@ function filter(number, country, format) {
   var country = defaultCountry || country;
   var format = defaultFormat || format;
 
-  var PNF = libphonenumber.PhoneNumberFormat;
   var phoneUtil = libphonenumber.PhoneNumberUtil.getInstance();
-  return phoneUtil.format(phoneUtil.parse(phone, country), format);
+  return phoneUtil.format(phoneUtil.parse(number, country), format);
 }
 
 function install(env) {
-  env.addFilter('phone', filter);
+  env.addFilter('phone_number', filter);
 }
 
 module.exports = filter;
