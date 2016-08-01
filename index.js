@@ -11,22 +11,27 @@ function setDefaultCountry(country) {
 }
 
 function setDefaultFormat(format) {
-  switch (format) {
-    case 'INTERNATIONAL':
-      defaultFormat = PNF.INTERNATIONAL;
-      break;
-    case 'NATIONAL':
-      defaultFormat = PNF.NATIONAL;
-      break;
-    case 'E164':
-      defaultFormat = PNF.E164;
-      break;
+  var matched = getFormatFromString(format);
+  if (matched) {
+    defaultFormat = matched;
   }
 }
 
+function getFormatFromString(formatStr) {
+  switch (formatStr) {
+    case 'INTERNATIONAL':
+      return PNF.INTERNATIONAL;
+    case 'NATIONAL':
+      return PNF.NATIONAL;
+    case 'E164':
+      return PNF.E164;
+  }
+  return null;
+}
+
 function filter(number, country, format) {
-  var country = defaultCountry || country;
-  var format = defaultFormat || format;
+  var country = country || defaultCountry;
+  var format = getFormatFromString(format) || defaultFormat;
 
   var phoneUtil = libphonenumber.PhoneNumberUtil.getInstance();
   return phoneUtil.format(phoneUtil.parse(number, country), format);
