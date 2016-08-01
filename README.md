@@ -9,7 +9,7 @@ npm install --save nunjucks-phone-filter
 ## Usage
 
 First get your nunjucks environment object.
-```
+```js
 // Environment from normal nunjucks configuration with express...
 var env = nunjucks.configure('views', {
   express: app,
@@ -22,13 +22,13 @@ var env = new nunjucks.Environment();
 
 Use `install()` to register the filter with nunjucks as `phone_number`:
 
-```
+```js
 require('nunjucks-phone-filter').install(env);
 ```
 
 Or, customize the filter name by using nunjucks `addFilter`:
 
-```
+```js
 env.addFilter('my_phone_formatter', require('nunjucks-phone-filter'));
 ```
 
@@ -44,7 +44,7 @@ The `phone_number` filter takes two arguments, `country` and `format`. Both are 
 
 By default, country is `US` and format is `NATIONAL`. Other valid formats are `INTERNATIONAL` and `E164` (see [E164 on wikipedia](https://en.wikipedia.org/wiki/E.164)).
 
-You call pass arguments like so:
+You can pass arguments like so:
 
 ```
 <p>{{foo.phone | phone_number('US', 'NATIONAL')}}</p>
