@@ -1,0 +1,28 @@
+{
+  "name": "nunjucks-phone-filter",
+  "version": "0.0.1",
+  "description": "A 'phone' filter that formats phone numbers in Nunjucks",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/typpo/nunjucks-phone-filter.git"
+  },
+  "keywords": [
+    "nunjucks",
+    "filter",
+    "phone",
+    "number"
+  ],
+  "author": "Ian Webster",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/typpo/nunjucks-phone-filter/issues"
+  },
+  "homepage": "https://github.com/typpo/nunjucks-phone-filter#readme",
+  "dependencies": {
+    "google-libphonenumber": "^1.0.27"
+  }
+}
