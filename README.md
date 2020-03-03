@@ -20,7 +20,7 @@ var env = nunjucks.configure('views', {
 var env = new nunjucks.Environment();
 ```
 
-Use `install()` to register the filter with nunjucks as `phone_number`:
+Use `install()` to register a filter named `phone_number` with nunjucks:
 
 ```js
 require('nunjucks-phone-filter').install(env);
@@ -51,13 +51,32 @@ You can pass arguments like so:
 ```
 
 ```
-'9147727420' | phone_number('US', 'NATIONAL') ==> (914) 772-7420
-'9147727420' | phone_number('US', 'INTERNATIONAL') ==> +1 914-772-7420
-'9147727420' | phone_number('US', 'E164') ==> (914) 772-7420
+{{ '9147727420' | phone_number('US', 'NATIONAL') }} ==> (914) 772-7420
+{{ '9147727420' | phone_number('US', 'INTERNATIONAL') }} ==> +1 914-772-7420
+{{ '9147727420' | phone_number('US', 'E164') }} ==> (914) 772-7420
 
-'2071234567' | phone_number('GB', 'NATIONAL') ==> 020 7123 4567
-'2071234567' | phone_number('GB', 'INTERNATIONAL') ==> +44 20 7123 4567
-'2071234567' | phone_number('GB', 'E164') ==> 020 7123 4567
+{{ '2071234567' | phone_number('GB', 'NATIONAL') }} ==> 020 7123 4567
+{{ '2071234567' | phone_number('GB', 'INTERNATIONAL') }} ==> +44 20 7123 4567
+{{ '2071234567' | phone_number('GB', 'E164') }} ==> 020 7123 4567
+```
+
+## Default arguments
+
+You can override the default country and format by calling `setDefaultCountry` and `setDefaultFormat`.
+
+For example:
+```
+const phoneFilter = require('nunjucks-phone-filter');
+
+phoneFilter.setDefaultCountry('GB');
+phoneFilter.setDefaultFormat('INTERNATIONAL');
+
+phoneFilter.install(env);
+```
+
+Because defaults have been modified, you no longer have to pass arguments to `phone_number`:
+```
+{{ '2071234567' | phone_number }} ==> +44 20 7123 4567
 ```
 
 ## License (MIT)
