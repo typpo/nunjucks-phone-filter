@@ -1,4 +1,5 @@
 # nunjucks-phone-filter
+[![npm](https://img.shields.io/npm/v/nunjucks-phone-filter)](https://www.npmjs.com/package/nunjucks-phone-filter)
 
 Phone number formatter for Nunjucks templating engine, based on Google's [libphonenumber](https://github.com/googlei18n/libphonenumber).
 
